@@ -1,0 +1,16 @@
+.simul {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  
+/* .content{
+    text-align: center;
+
+} */
+
+.content {
+    margin: 0 auto;
+    text-align: center;
+  }
+  

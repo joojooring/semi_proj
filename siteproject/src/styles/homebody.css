@@ -1,0 +1,58 @@
+#btn-home1{
+    position: absolute;
+    top: 70%;
+    left: 18%;
+    border-radius: 25px;
+    border: 1px solid ;
+    height: 45px;
+    width: 200px;
+    background-color: #ffee00;
+    font-weight: bold;
+    font-size: 18px;
+    transform: translate(10%, 10%);
+    z-index: 1;
+  }
+  
+  #btn-home2{
+    position: absolute;
+    top: 70%;
+    left: 43%;
+    border-radius: 25px;
+    border: 1px solid white;
+    height: 45px;
+    width: 150px;
+    background-color: rgb(252, 250, 250, 0.1);
+    color: white;
+    /* background-color: #fafafa; */
+    /* opacity: 0.5; */
+    font-weight: bold;
+    font-size: 18px;
+    transform: translate(10%, 10%);
+    z-index: 1;
+  }
+  
+  #btn-home1:hover {
+    background-color: white;
+  }
+
+  #btn-home2:hover {
+    background-color: rgb(250, 55, 55);
+  }
+
+  /*  
+  img {
+    -webkit-mask-image: radial-gradient(ellipse at center, transparent 0%, black 70%); /* 원형 그라데이션 마스크 
+    mask-image: radial-gradient(ellipse at center, transparent 0%, black 70%); /* 원형 그라데이션 마스크 
+  }
+  */
+  
+  
+
+.divbody{
+  position: absolute;
+  top: 50%;
+  left: 43%;
+  color: #ffee00;
+  z-index: 1;
+
+}
