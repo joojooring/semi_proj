@@ -12,16 +12,19 @@ function App() {
   return (
     <BrowserRouter>
       <HomeHeader />
+      <main style={{marginTop: "56px"}}>
       <Routes>
         <Route path='/' element={<Homebody />} />
         <Route path='/about' element={<About />} />
-        <Route path='/dental' element={<Dental />} />
+
+        {/* <Route path='/dental' element={<Dental />} /> */}
         {/* <Route path='/dental' element={<Dental />} /> */}
         <Route path='/dental' element={<DentalPrac />} />
 
         <Route path='/simulation' element={<Simulation />} />
 
       </Routes>
+      </main>
       <div className="App">
         {/* <CustomHook /> */}
       </div>

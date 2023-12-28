@@ -1,4 +1,4 @@
-import "../../css/pricing"
+import "../styles/pricing.css"
 
 import React,{useState} from 'react';
   
