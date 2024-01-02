@@ -44,7 +44,7 @@ const toggleMenu = ()=>{
             <Link to="/dental"><li onClick={toggleMenu}>Dental</li></Link>
             <Link to="/simulation"><button id="btn-header1" onClick={toggleMenu}>Simulation</button></Link>
             <Link to="/price"><li onClick={toggleMenu}>Pricing</li></Link>
-            <li>Sign in</li>
+            <Link to="/signup"><li onClick={toggleMenu}>Sign in</li></Link>
 
 
             </ul>

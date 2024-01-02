@@ -36,7 +36,7 @@ const KakaoMap = ({ coords }) => {
     const ps = new kakao.maps.services.Places();
 
     // 입력한 키워드로 검색
-    // - keyword: 검색할 키워드
+    // - keyword: 검색할 키워드 
     // - callback: 검색 결과를 받을 콜백함수
     ps.keywordSearch(keyword, (data, status) => {
       if (status === kakao.maps.services.Status.OK) {

@@ -1,0 +1,172 @@
+import {useForm} from "react-hook-form"
+import "../styles/signup.css"
+import { useEffect, useState } from "react";
+
+
+const User = {
+    name : "하이루",
+    email : "ghkdwnfl0557@naver.com",
+    pw : "joojoobab"
+}
+
+export default function Signup () {
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [pw, setPw] = useState("")
+
+
+    const {
+        register,
+        handleSubmit,
+        formState: {errors},
+        watch
+    }= useForm();
+
+    const onValid = (data) => {
+        console.log("성공 ", data)
+    }
+
+    const onInvalid = (error) => {
+        console.log("실패 ", error)
+    }
+
+    // const genderRegister = register("gender", {required: "성별은 필수값입니다."})
+
+    function onClickRegister(){
+        alert("회원가입 완료")
+    }
+
+
+    // function onClickRegister(){
+    //     if(name === User.name && email === User.email && pw === User.pw){
+    //         alert("로그인 완료!")
+    //     }else {
+    //         alert("등록되지 않은 회원입니다.")
+    //     }
+    // }
+
+    // useEffect(()=>{
+    //     if()
+    // },[])
+
+
+    return(
+        <>
+        <div className="signup_outside">
+
+            <h2 className="titleWrap">회원가입</h2>
+
+                <div className="contentWrap">
+                    <form onSubmit={handleSubmit(onValid, onInvalid)}>
+
+                    <div className="inputTitle">
+                    <i className="fa-solid fa-user"></i>
+                                    이름
+                    <div className="inputWrap">
+
+                        <input 
+                            className="input"
+                            type="text"
+                            value={name}
+                            placeholder="ex) 홍길동"
+                            onChange={(e)=>setName(e.target.value)}
+                            {...register("name",
+                            {required : "이름은 필수값입니다.",
+                            minLength:{
+                                value:2,
+                                message:"이름은 두 글자 이상 입력해야 합니다."
+                            }
+                        })}
+                        >
+                        </input>
+                    </div>
+                    </div>
+                        {errors.name && name.length >0 && (
+                        <div  style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.name.message}</div>
+                        )}                
+
+                        <br />
+
+
+                    <div className="inputTitle">
+                    <i className="fa-solid fa-envelope"></i>
+                                        이메일</div>
+                    <div className="inputWrap">
+
+
+                        <input
+                            className="input"
+                            type="email"
+                            value={email}
+                            placeholder="ex) whitening@google.com"
+                            onChange={(e)=>setEmail(e.target.value)}
+                            {...register("email", {
+                                required: "이메일은 필수값입니다.",
+                                pattern: {
+                                value:
+                                    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/, // 정규식 지정
+                                message: "올바른 형태의 이메일을 입력해주세요.", // 정규식을 만족하지 못했을 때, 발생시키는 오류 메세지
+                                },
+                            })}
+                        />
+                    </div>
+                            {errors.email && email.length >0 && (
+                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.email.message}</div>
+                            )}                
+
+                    <br />
+
+
+                    
+
+                    <div className="inputTitle">
+                    <i className="fa-solid fa-lock"></i>
+                        비밀번호</div>
+                    <div className="inputWrap">
+
+                        <input 
+                            className="input"
+                            type="password"
+                            value={pw}
+                            placeholder="비밀번호"
+                            onChange={(e)=>setPw(e.target.value)}
+                            {...register("pw",
+                            {required : "비밀번호는 필수값입니다.",
+                            pattern: {
+                                value: /^[a-zA-Z0-9]{4,12}$/,
+                                message:"4자리 이상 12자리 이하, 알파벳, 숫자를 포함해 아이디를 만들어주세요. "
+                                }
+                            })}
+                        >
+                        </input>
+                    </div>
+                        {errors.pw && pw.length >0 &&  (
+                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.pw.message}</div>
+                            )}                
+                    <br />
+                        
+                    <div className="gender">
+                        <label htmlFor="gender-men">
+                            <input type="radio" value="남" id="gender-men" {...register("gender", {required: "성별은 필수값입니다."})}></input>
+                            <i style={{color: "blue"}} className="fa-solid fa-mars"></i>
+                        남</label>
+
+                        <label htmlFor="gender-women">
+                            <input type="radio" value="여" id="gender-women" {...register("gender", {required: "성별은 필수값입니다."})}></input>
+                            <i style={{color: "red"}} className="fa-solid fa-venus"></i>
+                        여</label>{" "}
+                        {errors.gender && (
+                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.gender.message}</div>
+                            )}                
+                    </div>
+                    <br />
+
+                    </form>
+                </div>
+                <button disabled={true} className="btn-signup" type="submit" onClick={onClickRegister}>Register !</button>
+
+
+        </div>
+        </>
+    )
+};
