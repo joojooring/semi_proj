@@ -1,7 +1,7 @@
 import {useForm} from "react-hook-form"
 import "../styles/signup.css"
-import { useEffect, useState } from "react";
 
+const [name, setName] = useState("")
 
 // const User = {
 //     name : "하이루",
@@ -10,11 +10,6 @@ import { useEffect, useState } from "react";
 // }
 
 export default function Signup () {
-    // const [name, setName] = useState("")
-    // const [phonenumber, setPhoneNumber] = useState("")
-    // const [email, setEmail] = useState("")
-    // const [pw, setPw] = useState("")
-
 
     const {
         register,
@@ -25,25 +20,14 @@ export default function Signup () {
 
     const onValid = (data) => {
         
-        alert("회원가입 완료")
-       
+        alert("회원가입 완료");
+        window.location.href = "/login";
         console.log("성공 ", data)
     }
 
     const onInvalid = (error) => {
         console.log("실패 ", error)
     }
-
-    // const genderRegister = register("gender", {required: "성별은 필수값입니다."})
-
-    // function onClickRegister(){
-    //     if(name === User.name && email === User.email && pw === User.pw){
-    //         alert("로그인 완료!")
-    //     }else {
-    //         alert("등록되지 않은 회원입니다.")
-    //     }
-    // }
-
 
     return(
         <>
@@ -63,9 +47,9 @@ export default function Signup () {
                         <input 
                             className="signup_input"
                             type="text"
-                            // value={name}
+                            value={name}
+                            onChange={(e)=>setName(e.target.value)}
                             placeholder="ex) 홍길동"
-                            // onChange={(e)=>setName(e.target.value)}
                             {...register("name",
                             {required : "이름은 필수값입니다.",
                             minLength:{
@@ -153,9 +137,7 @@ export default function Signup () {
                         <input 
                             className="signup_input"
                             type="password"
-                            // value={pw}
                             placeholder="비밀번호"
-                            // onChange={(e)=>setPw(e.target.value)}
                             {...register("pw",
                             {required : "비밀번호는 필수값입니다.",
                             pattern: {

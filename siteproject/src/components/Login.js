@@ -4,6 +4,8 @@ import "../styles/signup.css"
 
 export default function Login(){
 
+
+
     const {
         register,
         handleSubmit,
@@ -12,13 +14,24 @@ export default function Login(){
     }= useForm();
 
     const onValid = (data) => {
-        
-        alert("로그인 성공")
-       
+        const { email, pw } = data;
+        const User = {
+        email : "ghkdwnfl0557@naver.com",
+        pw : "joo1234"
+    }
+    
+
+    if (email === User.email && pw === User.pw) {
+        alert("로그인 성공");
+        window.location.href = "/";
+    } else {
+        alert("등록되지 않은 회원입니다.");
+    }
         console.log("성공 ", data)
     }
 
     const onInvalid = (error) => {
+        alert("등록되지 않은 회원입니다.");
         console.log("실패 ", error)
     }
 
@@ -44,9 +57,7 @@ export default function Login(){
                         <input
                             className="signup_input"
                             type="email"
-                            // value={email}
                             placeholder="ex) whitening@google.com"
-                            // onChange={(e)=>setEmail(e.target.value)}
                             {...register("email", {
                                 required: "이메일은 필수값입니다.",
                                 pattern: {
@@ -74,9 +85,7 @@ export default function Login(){
                         <input 
                             className="signup_input"
                             type="password"
-                            // value={pw}
                             placeholder="비밀번호"
-                            // onChange={(e)=>setPw(e.target.value)}
                             {...register("pw",
                             {required : "비밀번호는 필수값입니다.",
                             pattern: {
