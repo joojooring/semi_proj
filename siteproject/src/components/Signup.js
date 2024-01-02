@@ -3,16 +3,17 @@ import "../styles/signup.css"
 import { useEffect, useState } from "react";
 
 
-const User = {
-    name : "하이루",
-    email : "ghkdwnfl0557@naver.com",
-    pw : "joojoobab"
-}
+// const User = {
+//     name : "하이루",
+//     email : "ghkdwnfl0557@naver.com",
+//     pw : "joojoobab"
+// }
 
 export default function Signup () {
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [pw, setPw] = useState("")
+    // const [name, setName] = useState("")
+    // const [phonenumber, setPhoneNumber] = useState("")
+    // const [email, setEmail] = useState("")
+    // const [pw, setPw] = useState("")
 
 
     const {
@@ -23,6 +24,9 @@ export default function Signup () {
     }= useForm();
 
     const onValid = (data) => {
+        
+        alert("회원가입 완료")
+       
         console.log("성공 ", data)
     }
 
@@ -32,11 +36,6 @@ export default function Signup () {
 
     // const genderRegister = register("gender", {required: "성별은 필수값입니다."})
 
-    function onClickRegister(){
-        alert("회원가입 완료")
-    }
-
-
     // function onClickRegister(){
     //     if(name === User.name && email === User.email && pw === User.pw){
     //         alert("로그인 완료!")
@@ -44,10 +43,6 @@ export default function Signup () {
     //         alert("등록되지 않은 회원입니다.")
     //     }
     // }
-
-    // useEffect(()=>{
-    //     if()
-    // },[])
 
 
     return(
@@ -58,18 +53,19 @@ export default function Signup () {
 
                 <div className="contentWrap">
                     <form onSubmit={handleSubmit(onValid, onInvalid)}>
-
+                    <div className="forminsideWrap">
+                    
                     <div className="inputTitle">
                     <i className="fa-solid fa-user"></i>
-                                    이름
+                                    이름</div>
                     <div className="inputWrap">
 
                         <input 
-                            className="input"
+                            className="signup_input"
                             type="text"
-                            value={name}
+                            // value={name}
                             placeholder="ex) 홍길동"
-                            onChange={(e)=>setName(e.target.value)}
+                            // onChange={(e)=>setName(e.target.value)}
                             {...register("name",
                             {required : "이름은 필수값입니다.",
                             minLength:{
@@ -79,13 +75,43 @@ export default function Signup () {
                         })}
                         >
                         </input>
+                    
                     </div>
-                    </div>
-                        {errors.name && name.length >0 && (
+                        {errors.name && (
                         <div  style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.name.message}</div>
                         )}                
 
                         <br />
+
+                    <div className="inputTitle">
+                    <i className="fa-solid fa-phone"></i>
+                                    전화번호</div>
+                    <div className="inputWrap">
+
+                        <input 
+                            className="signup_input"
+                            type="text"
+                            // value={phonenumber}
+                            placeholder="ex) 01022223333"
+                            // onChange={(e)=>setPhoneNumber(e.target.value)}
+                            {...register("phonenumber",
+                            {required : "전화번호는 필수값입니다.",
+                            minLength:{
+                                value:11,
+                                message:"정확하게 입력해주세요."
+                            }
+                        })}
+                        >
+                        </input>
+                    
+                    </div>
+                        {errors.phonenumber && (
+                        <div  style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.phonenumber.message}</div>
+                        )}                
+
+                        <br />
+
+
 
 
                     <div className="inputTitle">
@@ -95,11 +121,11 @@ export default function Signup () {
 
 
                         <input
-                            className="input"
+                            className="signup_input"
                             type="email"
-                            value={email}
+                            // value={email}
                             placeholder="ex) whitening@google.com"
-                            onChange={(e)=>setEmail(e.target.value)}
+                            // onChange={(e)=>setEmail(e.target.value)}
                             {...register("email", {
                                 required: "이메일은 필수값입니다.",
                                 pattern: {
@@ -110,7 +136,7 @@ export default function Signup () {
                             })}
                         />
                     </div>
-                            {errors.email && email.length >0 && (
+                            {errors.email  && (
                             <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.email.message}</div>
                             )}                
 
@@ -125,11 +151,11 @@ export default function Signup () {
                     <div className="inputWrap">
 
                         <input 
-                            className="input"
+                            className="signup_input"
                             type="password"
-                            value={pw}
+                            // value={pw}
                             placeholder="비밀번호"
-                            onChange={(e)=>setPw(e.target.value)}
+                            // onChange={(e)=>setPw(e.target.value)}
                             {...register("pw",
                             {required : "비밀번호는 필수값입니다.",
                             pattern: {
@@ -140,7 +166,7 @@ export default function Signup () {
                         >
                         </input>
                     </div>
-                        {errors.pw && pw.length >0 &&  (
+                        {errors.pw && (
                             <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.pw.message}</div>
                             )}                
                     <br />
@@ -159,11 +185,11 @@ export default function Signup () {
                             <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.gender.message}</div>
                             )}                
                     </div>
+                    </div>
                     <br />
-
+                    <button className="btn-signup" type="submit">Register !</button>
                     </form>
                 </div>
-                <button disabled={true} className="btn-signup" type="submit" onClick={onClickRegister}>Register !</button>
 
 
         </div>

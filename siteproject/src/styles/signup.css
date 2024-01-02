@@ -25,13 +25,19 @@
 
 .contentWrap{
     margin-top: 26px;
-    flex: 1;
+    display: flex;
+}
+.forminsideWrap{
+    flex:1;
+    display: flex;
+    flex-direction: column;
 }
 
 .inputTitle{
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
     color: #262626;
+    width: 450px;
 }
 
 .inputWrap{
@@ -41,14 +47,14 @@
     margin-top: 8px;
     background-color: white;
     border: 1px solid rgb(137, 137, 136);
-
+    flex: 1;
 }
 
 .inputWrap:focus-within{
     border: 2px solid rgb(23, 98, 239);
 }
 
-.input{
+.signup_input{
     width: 100%;
     outline: none;
     border: none;
@@ -59,7 +65,9 @@
 }
 
 .gender{
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 400;
+    flex: 1;
 }
 
 .btn-signup{

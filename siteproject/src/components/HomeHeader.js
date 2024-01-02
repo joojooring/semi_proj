@@ -44,7 +44,8 @@ const toggleMenu = ()=>{
             <Link to="/dental"><li onClick={toggleMenu}>Dental</li></Link>
             <Link to="/simulation"><button id="btn-header1" onClick={toggleMenu}>Simulation</button></Link>
             <Link to="/price"><li onClick={toggleMenu}>Pricing</li></Link>
-            <Link to="/signup"><li onClick={toggleMenu}>Sign in</li></Link>
+            <Link to="/signup"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>회원가입</li></Link>
+            <Link to="/login"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>로그인</li></Link>
 
 
             </ul>
