@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import "../styles/map.css"
-// import "../index.css"
 const { kakao } = window;
 
 export default function KakaoMapContainer ({ searchPlace }) {
@@ -109,7 +108,7 @@ export default function KakaoMapContainer ({ searchPlace }) {
         id="myMap"
         style={{
           width: '1100px',
-          height: '1400px',
+          height: '800px',
         }}
       ></div>
       <div id="result-list">

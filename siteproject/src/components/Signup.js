@@ -1,7 +1,6 @@
 import {useForm} from "react-hook-form"
 import "../styles/signup.css"
 
-const [name, setName] = useState("")
 
 // const User = {
 //     name : "하이루",
@@ -47,8 +46,6 @@ export default function Signup () {
                         <input 
                             className="signup_input"
                             type="text"
-                            value={name}
-                            onChange={(e)=>setName(e.target.value)}
                             placeholder="ex) 홍길동"
                             {...register("name",
                             {required : "이름은 필수값입니다.",
@@ -75,9 +72,7 @@ export default function Signup () {
                         <input 
                             className="signup_input"
                             type="text"
-                            // value={phonenumber}
                             placeholder="ex) 01022223333"
-                            // onChange={(e)=>setPhoneNumber(e.target.value)}
                             {...register("phonenumber",
                             {required : "전화번호는 필수값입니다.",
                             minLength:{
@@ -107,9 +102,7 @@ export default function Signup () {
                         <input
                             className="signup_input"
                             type="email"
-                            // value={email}
                             placeholder="ex) whitening@google.com"
-                            // onChange={(e)=>setEmail(e.target.value)}
                             {...register("email", {
                                 required: "이메일은 필수값입니다.",
                                 pattern: {
@@ -152,6 +145,33 @@ export default function Signup () {
                             <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.pw.message}</div>
                             )}                
                     <br />
+
+                    <div className="inputTitle">
+                    <i className="fa-solid fa-lock"></i>
+                        비밀번호 확인</div>
+                    <div className="inputWrap">
+
+                        <input 
+                            className="signup_input"
+                            type="password"
+                            placeholder="비밀번호 확인"
+                            {...register("confirmPassword",
+                            {required : true,
+                                validate: (value) => {
+                                    if (watch("pw") != value) {
+                                      return "패스워드가 일치하지 않습니다.";
+                                    }
+                                },
+                                              })}
+                        >
+                        </input>
+                    </div>
+                        {errors.confirmPassword  && (
+                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.confirmPassword .message}</div>
+                            )}                
+                    <br />
+
+
                         
                     <div className="gender">
                         <label htmlFor="gender-men">
