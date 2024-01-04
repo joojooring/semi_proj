@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "../styles/map.css"
 const { kakao } = window;
 
-export default function KakaoMapContainer ({ searchPlace }) {
+export default function KakaoMapContainer ({ searchPlace, Place }) {
   const [Places, setPlaces] = useState([]);
 
   useEffect(() => {

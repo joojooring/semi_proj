@@ -18,11 +18,18 @@ function KakaoMapLanding() {
 
   return (
     <>
+    <div className='map_outside'>
       <form className="inputForm" onSubmit={handleSubmit}>
         <input className='searchInput' placeholder="(동네이름 / 근처 지하철역 +)치과를 입력하세요" onChange={onChange} value={InputText} />
         <button className='searchButton' type="submit">검색</button>
       </form>
+      <div className='searchplace'>
+      <div className='mapContainer'>
       <KakaoMapContainer searchPlace={Place} />
+      </div>
+      
+      </div>
+    </div>
     </>
   )
 }

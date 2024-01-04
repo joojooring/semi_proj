@@ -7,7 +7,18 @@ import About from "./About"
 export default function HomeHeader() {
 
   const [menulist, setMenuList] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+
+  const handleLogin = () => {
+    // 로그인 로직 처리 후 로그인 상태 업데이트
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    // 로그아웃 로직 처리 후 로그인 상태 업데이트
+    setIsLoggedIn(false);
+  };
 
   // 리액트 컴포넌트에서 외부 스크립트를 사용하려면 useEffect 사용해서 추가해야됨
   useEffect(() => {
@@ -44,8 +55,35 @@ const toggleMenu = ()=>{
             <Link to="/dental"><li onClick={toggleMenu}>Dental</li></Link>
             <Link to="/simulation"><button id="btn-header1" onClick={toggleMenu}>Simulation</button></Link>
             <Link to="/product"><li onClick={toggleMenu}>Product</li></Link>
-            <Link to="/signup"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>회원가입</li></Link>
-            <Link to="/login"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>로그인</li></Link>
+           
+            {isLoggedIn ? (
+        // 로그인 헤더 (로그아웃 상태)
+        <React.Fragment>
+          <Link to="/logout">
+            <li onClick={handleLogout} style={{ fontSize: "16px", marginTop: "5px" }}>
+              로그아웃
+            </li>
+          </Link>
+          {/* 로그인 헤더의 나머지 내용 */}
+        </React.Fragment>
+      ) : (
+        // 회원가입 헤더 (로그인 상태)
+        <React.Fragment>
+          <Link to="/signup">
+            <li onClick={toggleMenu} style={{ fontSize: "16px", marginTop: "5px" }}>
+              회원가입
+            </li>
+          </Link>
+          <Link to="/login">
+            <li onClick={handleLogin} style={{ fontSize: "16px", marginTop: "5px" }}>
+              로그인
+            </li>
+          </Link>
+        </React.Fragment>
+      )}
+
+            {/* <Link to="/signup"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>회원가입</li></Link>
+            <Link to="/login"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>로그인</li></Link> */}
             <Link to="/cart"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>장바구니</li></Link>
 
 

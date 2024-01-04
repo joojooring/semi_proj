@@ -1,11 +1,10 @@
+
 .searchInput{
     width: 1000px;
     height: 28px;
     font-size: 18px;
     
 }
-
-
 .searchInput::placeholder {
     color: red;
   }
