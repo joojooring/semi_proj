@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom';
 import "../styles/headerprac.css"
 
 import About from "./About"
+
+
 export default function HomeHeader() {
 
   const [menulist, setMenuList] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
-  const handleLogin = () => {
+  const handleLogin = (isLoggedIn) => {
     // 로그인 로직 처리 후 로그인 상태 업데이트
-    setIsLoggedIn(true);
+    setIsLoggedIn(isLoggedIn);
   };
 
   const handleLogout = () => {
@@ -57,18 +59,16 @@ const toggleMenu = ()=>{
             <Link to="/product"><li onClick={toggleMenu}>Product</li></Link>
            
             {isLoggedIn ? (
-        // 로그인 헤더 (로그아웃 상태)
-        <React.Fragment>
-          <Link to="/logout">
-            <li onClick={handleLogout} style={{ fontSize: "16px", marginTop: "5px" }}>
-              로그아웃
-            </li>
-          </Link>
-          {/* 로그인 헤더의 나머지 내용 */}
-        </React.Fragment>
-      ) : (
-        // 회원가입 헤더 (로그인 상태)
-        <React.Fragment>
+            <>
+            <Link to="/">
+              <li onClick={handleLogout} style={{ fontSize: "16px", marginTop: "5px" }}>
+                로그아웃
+              </li>
+            </Link>
+            {/* 로그인 헤더의 나머지 내용 */}
+            </>
+          ) : (
+            <>
           <Link to="/signup">
             <li onClick={toggleMenu} style={{ fontSize: "16px", marginTop: "5px" }}>
               회원가입
@@ -79,27 +79,12 @@ const toggleMenu = ()=>{
               로그인
             </li>
           </Link>
-        </React.Fragment>
+        </>
       )}
 
-            {/* <Link to="/signup"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>회원가입</li></Link>
-            <Link to="/login"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>로그인</li></Link> */}
             <Link to="/cart"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>장바구니</li></Link>
 
-
-
             </ul>
-            {/* <div>Home</div> */}
-            {/* <Link to="/about">About</Link> */}
-            {/* <div>Dental</div> */}
-            {/* <Link to="/dental">Dental</Link>
-            <Link to="/simulation">
-            <button id="btn-header1">Simulation</button>
-            </Link> */}
-            {/* <div>Pricing</div> */}
-            {/* <Link to="/price">Pricing</Link> */}
-            {/* <div>Sign in</div> */}
-          {/* </div> */}
         </nav>
       </header>
     </>

@@ -107,8 +107,9 @@ export default function KakaoMapContainer ({ searchPlace, Place }) {
       <div
         id="myMap"
         style={{
-          width: '1100px',
-          height: '800px',
+          width: '1400px',
+          height: '1100px',
+          position : "absolute",
         }}
       ></div>
       <div id="result-list">

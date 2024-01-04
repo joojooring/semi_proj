@@ -2,7 +2,7 @@ import {useForm} from "react-hook-form"
 import "../styles/signup.css"
 
 
-export default function Login(){
+export default function Login({ handleLogin }){
 
 
 

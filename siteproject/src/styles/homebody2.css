@@ -2,7 +2,15 @@
   position: relative;
 }
 
+.txtoutside{
+  position: absolute;
+  top: 50%; /* 이미지 위로 이동할 값 설정 */
+  left: 30%;
+}
+
 .img-container2 {
+  position: relative;
+  display: flex;
   width: 100%;
   height: 80%;
   overflow: hidden;
@@ -19,20 +27,23 @@
   z-index: 1;
 }
 
-
+.homebodybtn{
+  display: flex;
+  justify-content: center;
+}
 
 #btn-home12{
     position: absolute;
     top: 70%;
     left: 18%;
-    border-radius: 25px;
+    border-radius: 50px;
     border: 1px solid ;
-    height: 2em;
-    width: 11em;
-    background-color: #ffee00;
+    height: 2.5em;
+    width: 13em;
+    background-color: #f0e329;
     font-weight: bold;
-    font-size: 15px;
-    transform: translate(10%, 10%);
+    font-size: 24px;
+    transform: translate(-50%, 10%);
     z-index: 1;
   }
   
@@ -40,17 +51,17 @@
     position: absolute;
     top: 70%;
     left: 43%;
-    border-radius: 25px;
+    border-radius: 50px;
     border: 1px solid white;
-    height: 2em;
-    width: 5em;
+    height: 2.5em;
+    width: 7em;
     background-color: rgb(252, 250, 250, 0.1);
     color: white;
     /* background-color: #fafafa; */
     /* opacity: 0.5; */
     font-weight: bold;
-    font-size: 15px;
-    transform: translate(10%, 10%);
+    font-size: 24px;
+    transform: translate(40%, 10%);
     z-index: 1;
   }
   
@@ -62,24 +73,17 @@
     background-color: rgb(250, 55, 55);
   }
 
-  /*  
-  img {
-    -webkit-mask-image: radial-gradient(ellipse at center, transparent 0%, black 70%); /* 원형 그라데이션 마스크 
-    mask-image: radial-gradient(ellipse at center, transparent 0%, black 70%); /* 원형 그라데이션 마스크 
-  }
-  */
-  
   
 
 .divbody2{
-  position: absolute;
+  position: relative;
   padding: 5px 10px;
   top: 50%;
   left: 38%;
   text-align: center;
   color: #ffee00;
   z-index: 1;
-  font-size: 30px;
+  font-size: 70px;
   transform: translate( -50%, -50% );
   
 }
@@ -97,11 +101,34 @@
 
 .divbody22{
   position: absolute;
-  top: 70%;
-  left: 20%;
+  top: 90%;
+  left: 10%;
   color: #001eff;
   z-index: 1;
-  font-size: 30px;
-  transform: translate( -50%, -70% );
+  font-size: 50px;
+  transform: translate( 20%, 250% );
+
+}
+
+@media screen and (max-width: 768px ){
+
+  .divbody2{
+    font-size: 40px;
+  }
+  .divbody22{
+    font-size: 35px;
+    transform: translate( 14%, 100% );
+  }
+  #btn-home12{
+    height: 2em;
+    width: 10em;
+    font-size: 17px;
+
+  }
+  #btn-home22{
+    height: 2em;
+    width: 4em;
+    font-size: 17px;
+  }
 
 }

@@ -71,15 +71,15 @@ const ProductComponent = ({ product }) => {
 
   return (
     <div className="product_container">
+      <div className="product_image">
+        <img src={product.image} alt={product.name} />
+      </div>
       <div className="product_description">
-        <h2>{product.name}</h2>
+        <h3>{product.name}</h3>
         <p>{product.description}</p>
         <p>{product.price} </p>
         <p>{product.quantity}{state.value +1} <button onClick={plus}>+</button><button onClick={minus}>-</button></p>
         <button>장바구니</button>
-      </div>
-      <div className="product_image">
-        <img src={product.image} alt={product.name} />
       </div>
     </div>
   );
@@ -88,7 +88,7 @@ const ProductComponent = ({ product }) => {
 const Product = () => {
   return (
     <div>
-      <h1 style={{textAlign : "center", backgroundColor : "ivory", margin: "0"}}>상품 목록</h1>
+      <h1 style={{textAlign : "center", backgroundColor : "ivory", margin: "0", padding:"10px"}}>상품 목록</h1>
       {products.map((product) => (
         <ProductComponent key={product.id} product={product} />
       ))}
