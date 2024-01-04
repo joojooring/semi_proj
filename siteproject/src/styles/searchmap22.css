@@ -1,0 +1,80 @@
+
+.mapContainer{
+    display: flex;
+  flex-direction: row;
+}
+
+.searchInput{
+    width: 1000px;
+    height: 28px;
+    font-size: 18px;
+    border: none;
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    
+}
+.searchInput::placeholder {
+    color: red;
+    text-align: center;
+
+  }
+
+.searchInput:focus-within{
+  border-width: 0 0 1px;
+}
+/* .searchButton{
+    margin-top: 2px;
+    height: 28px;
+    font-size: 15px;
+} */
+
+/* .searchplace{
+    width: 70%;
+} */
+
+.searchButton {
+  font-weight: 600; /* 글꼴 굵기를 600으로 설정 */
+  border: none; /* 테두리 스타일 없음 */
+  overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
+  transition: 0.3s; /* 변화에 대한 전환 효과 속도를 0.3초로 설정 */
+  background-color: transparent;
+  font-size: large;
+
+  &:hover {
+    transform: scale(1.5); /* 마우스 호버 시 크기를 1.1배로 확대 */
+  }
+
+  span {
+    display: block; /* span 요소를 블록 요소로 설정하여 한 줄에 하나의 요소가 나타나도록 함 */
+    padding: 0 20px; /* 좌우 20px의 여백 설정 */
+    animation: move-right 3s linear infinite; /* move-left 애니메이션을 2초 동안 선형으로 무한 반복 */
+
+    &::after {
+      position: absolute; /* 절대 위치로 설정 */
+      content: attr(data-text); /* data-text 속성 값을 내용으로 설정 */
+      top: 0; /* 부모 요소 상단 기준으로 위치 설정 */
+      left: 100%; /* 부모 요소 왼쪽 끝을 기준으로 위치 설정 */
+      display: flex; /* 내부 내용을 플렉스 박스로 설정하여 가운데 정렬 */
+      justify-content: center; /* 수평 가운데 정렬 */
+      align-items: center; /* 수직 가운데 정렬 */
+      width: 100%; /* 너비 100%로 설정 */
+      height: 100%; /* 높이 100%로 설정 */
+    }
+  }
+}
+
+@keyframes move-right {
+  0% {
+    transform: translateX(0); /* 초기 위치에서 시작 */
+  }
+  100% {
+    transform: translateX(100%); /* 왼쪽으로 100%만큼 이동하여 텍스트 이동 효과 생성 */
+  }
+}
+
+.btn {
+  margin: 1rem;
+
+}
