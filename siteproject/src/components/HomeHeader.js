@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 // import "../styles/header.css"
 import "../styles/headerprac.css"
-import CustomHook from './CustomHooks';
+
 import About from "./About"
 export default function HomeHeader() {
 
@@ -43,9 +43,11 @@ const toggleMenu = ()=>{
             <Link to="/"><li onClick={toggleMenu}>Home</li></Link>
             <Link to="/dental"><li onClick={toggleMenu}>Dental</li></Link>
             <Link to="/simulation"><button id="btn-header1" onClick={toggleMenu}>Simulation</button></Link>
-            <Link to="/price"><li onClick={toggleMenu}>Pricing</li></Link>
+            <Link to="/product"><li onClick={toggleMenu}>Product</li></Link>
             <Link to="/signup"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>회원가입</li></Link>
             <Link to="/login"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>로그인</li></Link>
+            <Link to="/cart"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>장바구니</li></Link>
+
 
 
             </ul>
