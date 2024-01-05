@@ -7,7 +7,8 @@ import Homebody2 from "./components/HomeBody2";
 import About from './components/About';
 import Simulation from './components/Simulation';
 import Signup from './components/Signup';
-import KakaoMapContainer22 from './components/KakaoMapContainer22';
+// import KakaoMapContainer22 from './components/KakaoMapContainer22';
+import KakaoMapLanding22 from './components/KakaoMapLanding22';
 
 import Login from './components/Login';
 import Product from './components/Product';
@@ -23,7 +24,8 @@ function App() {
       <Route path='/' element={<Homebody2 />} />
         {/* <Route path='/' element={<Homebody />} /> */}
         <Route path='/about' element={<About />} />
-        <Route path='/dental' element={<KakaoMapContainer22/>} />
+        {/* <Route path='/dental' element={<KakaoMapContainer22/>} /> */}
+        <Route path='/dental' element={<KakaoMapLanding22/>} />
 
         <Route path='/simulation' element={<Simulation />} />
         <Route path='/product' element={<Product />} />

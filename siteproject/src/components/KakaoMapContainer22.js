@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import "../styles/map22.css"
 const { kakao } = window;
 
-export default function KakaoMapContainer22 ({ searchPlace }) {
-  const [Places, setPlaces] = useState([]);
-  const [InputText, setInputText] = useState('')
+export default function KakaoMapContainer22 ({ searchPlace, Place }) {
+  // const [Places, setPlaces] = useState([]);
+  const [showMenuWrap, setShowMenuWrap] = useState(false);
 
+  // const [InputText, setInputText] = useState('')
 
   useEffect(() => {
     const initializeMap = () => {
@@ -53,15 +54,17 @@ export default function KakaoMapContainer22 ({ searchPlace }) {
     // var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
     // 키워드로 장소를 검색합니다
-    searchPlaces();
+    // searchPlaces();
 
-    // 키워드 검색을 요청하는 함수입니다
-    function searchPlaces() {
-      var keyword = "용산역 치과";
+    // // 키워드 검색을 요청하는 함수입니다
+    // function searchPlaces() {
+    //   var keyword = "용산역 치과";
 
-      // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-      ps.keywordSearch(keyword, placesSearchCB);
-    }
+    //   // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+    //   ps.keywordSearch(keyword, placesSearchCB);
+    // }
+
+          ps.keywordSearch(searchPlace, placesSearchCB);
 
     // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
     function placesSearchCB(data, status, pagination) {
@@ -135,6 +138,11 @@ export default function KakaoMapContainer22 ({ searchPlace }) {
 
       // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
       map.setBounds(bounds);
+      if (places.length > 0) {
+        setShowMenuWrap(true);
+      } else {
+        setShowMenuWrap(false);
+      }
     }
 
     // 검색결과 항목을 Element로 반환하는 함수입니다
@@ -255,29 +263,14 @@ export default function KakaoMapContainer22 ({ searchPlace }) {
   initializeMap();
 
   return () => {
-    // 컴포넌트가 언마운트될 때 실행될 클린업 함수
-    // 필요한 경우에만 사용하세요.
   };
 
     
   }, [searchPlace]);
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setPlaces(InputText)
-    setInputText('')
-  }
-
   return (
     <>
-    <div>
-      <form className="inputForm" onSubmit={handleSubmit}>
-        <input className='searchInput' placeholder="(동네이름 / 근처 지하철역 +) 치과를 입력하세요" onChange={(e)=>setInputText(e.target.value)} value={InputText} />
-        <button className="searchButton" type="submit">Click !</button>
-      </form>
-    </div>
-
     <div className="map_wrap">
       <div
         id="map"
@@ -288,7 +281,7 @@ export default function KakaoMapContainer22 ({ searchPlace }) {
           overflow: "hidden",
         }}
       ></div>
-      <div id="menu_wrap" className="bg_white">
+      <div id="menu_wrap" style={{ display: showMenuWrap ? 'block' : 'none' }} className="bg_white">
         <hr />
         <ul id="placesList"></ul>
         

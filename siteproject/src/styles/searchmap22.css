@@ -1,3 +1,8 @@
+.inputForm{
+  width: 100%;
+  /* display: flex;
+  flex: 1; */
+}
 
 .mapContainer{
     display: flex;
@@ -5,16 +10,18 @@
 }
 
 .searchInput{
-    width: 1000px;
-    height: 28px;
+  width: 80%;
+    /* width: 1000px;
+    height: 28px; */
     font-size: 18px;
     border: none;
     overflow: hidden;
     padding-top: 10px;
     padding-bottom: 10px;
-
-    
+    /* display: flex; */
+    /* flex: 1; */
 }
+
 .searchInput::placeholder {
     color: red;
     text-align: center;
