@@ -23,7 +23,7 @@ function KakaoMapLanding22() {
 
 
         <button className="searchButton" type="submit">
-        <span className="Marquee">Click !</span>
+        <span className="Marquee">Click</span>
         </button>
         {/* <button className='searchButton' type="submit">검색</button> */}
       </form>
