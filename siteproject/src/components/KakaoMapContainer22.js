@@ -276,7 +276,8 @@ export default function KakaoMapContainer22 ({ searchPlace, Place }) {
         id="map"
         style={{
           width: "100%",
-          height: "100vh",
+          height: "200vh",
+          // height: "100vh",
           position: "relative",
           overflow: "hidden",
         }}

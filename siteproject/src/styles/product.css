@@ -1,29 +1,32 @@
+.product_container{
+  padding: 0rem 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  place-items: center;
+  margin: 0px;
+  padding: 2rem;
+  border: 0px;
+  font: inherit;
+  vertical-align: baseline;
+}
 
+.product_image{
+  border-radius: 10px;
+  width: 17vw;
+  margin-bottom: 10px;
+  margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font: inherit;
+    vertical-align: baseline;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    cursor: pointer;
+}
 
-   .product_container {
-    display: flex;
-    background-color: rgb(249, 242, 233);
-  }
-  
-  .product_description {
-    flex: 1;
-    padding-left: 100px;
-    padding-top: 100px;
-    font-size: 20px;
-  }
-  
-  .product_image {
-    flex: 1;
-    display: flex;
-    justify-content: center; /* 이미지를 수평 가운데 정렬하기 위해 추가 */
-    align-items: center; /* 이미지를 수직 가운데 정렬하기 위해 추가 */
-  }
-  
-  .product_image img {
-    /* width: 40%;
-    height: auto;
-    padding-left: 100px;
-    padding-top: 100px; */
-    max-width: 60%; /* 이미지의 최대 가로 너비를 100%로 설정 */
-    max-height: 60%; /* 이미지의 최대 세로 높이를 100%로 설정 */
-  }
+.product_description{
+
+}
