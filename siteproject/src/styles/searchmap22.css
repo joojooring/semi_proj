@@ -10,14 +10,14 @@
 }
 
 .searchInput{
+    padding-left: 20px;
     width: 80%;
     font-size: 18px;
+    font-weight: bold;
     border: none;
     overflow: hidden;
     padding-top: 10px;
     padding-bottom: 10px;
-    /* display: flex; */
-    /* flex: 1; */
 }
 
 .searchInput::placeholder {
