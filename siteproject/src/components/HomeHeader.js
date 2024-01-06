@@ -2,24 +2,39 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 // import "../styles/header.css"
 import "../styles/headerprac.css"
-
+import { useSelector, useDispatch } from "react-redux";
+import { logout, loginSuccess } from "../redux/actions/authAction";
 import About from "./About"
 
 
 export default function HomeHeader() {
 
   const [menulist, setMenuList] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const dispatch = useDispatch();
 
 
-  const handleLogin = (isLoggedIn) => {
-    // 로그인 로직 처리 후 로그인 상태 업데이트
-    setIsLoggedIn(isLoggedIn);
+  // const handleLogin = (isLoggedIn) => {
+  //   // 로그인 로직 처리 후 로그인 상태 업데이트
+  //   setIsLoggedIn(isLoggedIn);
+  // };
+
+  // const handleLogout = () => {
+  //   // 로그아웃 로직 처리 후 로그인 상태 업데이트
+
+
+  //   setIsLoggedIn(false);
+  // };
+
+  const handleLogin = () => {
+    dispatch(loginSuccess());
   };
 
   const handleLogout = () => {
-    // 로그아웃 로직 처리 후 로그인 상태 업데이트
-    setIsLoggedIn(false);
+    dispatch(logout());
+    
   };
 
   // 리액트 컴포넌트에서 외부 스크립트를 사용하려면 useEffect 사용해서 추가해야됨
@@ -75,14 +90,14 @@ const toggleMenu = ()=>{
             </li>
           </Link>
           <Link to="/login">
-            <li onClick={handleLogin} style={{ fontSize: "16px", marginTop: "5px" }}>
+            <li style={{ fontSize: "16px", marginTop: "5px" }}>
               로그인
             </li>
           </Link>
         </>
       )}
 
-            <Link to="/cart"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>장바구니</li></Link>
+            {/* <Link to="/cart"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>장바구니</li></Link> */}
 
             </ul>
         </nav>

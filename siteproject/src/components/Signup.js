@@ -1,5 +1,9 @@
 import {useForm} from "react-hook-form"
 import "../styles/signup.css"
+import { registerUser } from "../redux/actions/registerAction";
+
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 
 // const User = {
@@ -9,6 +13,8 @@ import "../styles/signup.css"
 // }
 
 export default function Signup () {
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const {
         register,
@@ -18,9 +24,9 @@ export default function Signup () {
     }= useForm();
 
     const onValid = (data) => {
-        
+        dispatch(registerUser(data));
         alert("회원가입 완료");
-        window.location.href = "/login";
+        navigate("/login");;
         console.log("성공 ", data)
     }
 

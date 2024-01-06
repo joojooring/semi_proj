@@ -41,13 +41,13 @@ useEffect(() => {
     <h2 className={showText ? "simulation_top animation" : "simulation_top"}  style={showText ? {} : { paddingLeft: "10px" }}>
             {showText ? "Self impression for bleaching frame at home" : "How to ?"}
           </h2>
+          </div>
         <div className="player">
         <YouTube 
           className="youtube-player"
           videoId="BSWo2WduxgE" opts={opts} onReady={onReady} />;
         </div>
 
-    </div>
       {/* <div className="simul">
         <div className="content">
           <h2>Before</h2>

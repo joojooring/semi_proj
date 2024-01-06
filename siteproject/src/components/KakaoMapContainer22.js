@@ -276,12 +276,12 @@ export default function KakaoMapContainer22 ({ searchPlace, Place }) {
         id="map"
         style={{
           width: "100%",
-          height: "100%",
+          height: "100vh",
           position: "relative",
           overflow: "hidden",
         }}
       ></div>
-      <div id="menu_wrap" style={{ display: showMenuWrap ? 'block' : 'none' }} className="bg_white">
+      <div id="menu_wrap" className={showMenuWrap ? "bg_white" : "bg_white hidden"}>
         <hr />
         <ul id="placesList"></ul>
         

@@ -1,12 +1,10 @@
-.inputForm{
+/* .inputForm{
   width: 100%;
-  /* display: flex;
-  flex: 1; */
-}
+} */
 
 .mapContainer{
     display: flex;
-  flex-direction: row;
+    flex-direction: row;
 }
 
 .searchInput{
@@ -21,10 +19,10 @@
 }
 
 .searchInput::placeholder {
-    color: red;
+    color: rgb(69, 149, 229);
     text-align: center;
     font-weight: 500;
-
+    font-family:sans-serif;
   }
 
   .searchInput:hover::placeholder{
@@ -55,46 +53,97 @@
   transition: 0.3s; /* 변화에 대한 전환 효과 속도를 0.3초로 설정 */
   background-color: transparent;
   font-size: large;
+  animation: jittery 3s infinite;
 
   &:hover {
     transform: scale(1.5); /* 마우스 호버 시 크기를 1.1배로 확대 */
   }
 
-  span {
-    display: block; /* span 요소를 블록 요소로 설정하여 한 줄에 하나의 요소가 나타나도록 함 */
-    padding: 0 20px; /* 좌우 20px의 여백 설정 */
-    animation: move-right 3s linear infinite; /* move-left 애니메이션을 2초 동안 선형으로 무한 반복 */
+  /* span {
+    display: block; 
+    padding: 0 20px; 
+    animation: move-right 3s linear infinite; 
 
     &::after {
-      position: absolute; /* 절대 위치로 설정 */
-      content: attr(data-text); /* data-text 속성 값을 내용으로 설정 */
-      top: 0; /* 부모 요소 상단 기준으로 위치 설정 */
-      left: 100%; /* 부모 요소 왼쪽 끝을 기준으로 위치 설정 */
-      display: flex; /* 내부 내용을 플렉스 박스로 설정하여 가운데 정렬 */
-      justify-content: center; /* 수평 가운데 정렬 */
-      align-items: center; /* 수직 가운데 정렬 */
-      width: 100%; /* 너비 100%로 설정 */
-      height: 100%; /* 높이 100%로 설정 */
+      position: absolute; 
+      content: attr(data-text); 
+      top: 0; 
+      left: 100%; 
+      display: flex;
+      justify-content: center; 
+      align-items: center; 
+      width: 100%;
+      height: 100%;
     }
+  } */
+}
+
+/* @keyframes move-right {
+  0% {
+    transform: translateX(0); 
+  }
+  100% {
+    transform: translateX(100%); 
+  }
+} */
+@keyframes jittery {
+  5%,
+  50% {
+    transform: scale(1);
+  }
+
+  10% {
+    transform: scale(0.9);
+  }
+
+  15% {
+    transform: scale(1.15);
+  }
+
+  20% {
+    transform: scale(1.15) rotate(-5deg);
+  }
+
+  25% {
+    transform: scale(1.15) rotate(5deg);
+  }
+
+  30% {
+    transform: scale(1.15) rotate(-3deg);
+  }
+
+  35% {
+    transform: scale(1.15) rotate(2deg);
+  }
+
+  40% {
+    transform: scale(1.15) rotate(0);
   }
 }
 
-@keyframes move-right {
-  0% {
-    transform: translateX(0); /* 초기 위치에서 시작 */
-  }
-  100% {
-    transform: translateX(100%); /* 왼쪽으로 100%만큼 이동하여 텍스트 이동 효과 생성 */
-  }
-}
 
 .btn {
   margin: 1rem;
 
 }
 
-@media screen and (max-width : 768px) {
+@media screen and (max-width : 460px) {
+  .inputForm{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%; */
+  }
+  .searchInput{
+    width: 100%;
+    }
+
   .searchButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* background-color:rgb(69, 149, 229); */
+    color: rgb(4, 26, 48);
   }
 
 }

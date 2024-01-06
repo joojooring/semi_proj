@@ -1,10 +1,14 @@
 import {useForm} from "react-hook-form"
 import "../styles/signup.css"
+import { useDispatch } from "react-redux";
+import { loginSuccess, loginFailure } from "../redux/actions/authAction";
+// import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-
-export default function Login({ handleLogin }){
-
-
+export default function Login(){
+    const dispatch = useDispatch();
+    // const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const navigate = useNavigate()
 
     const {
         register,
@@ -22,9 +26,11 @@ export default function Login({ handleLogin }){
     
 
     if (email === User.email && pw === User.pw) {
+        dispatch(loginSuccess(User));
         alert("로그인 성공");
-        window.location.href = "/";
+        navigate("/")
     } else {
+        dispatch(loginFailure());
         alert("등록되지 않은 회원입니다.");
     }
         console.log("성공 ", data)

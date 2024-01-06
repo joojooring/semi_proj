@@ -4,10 +4,10 @@
     bottom: 0;
     width: 100%;
     max-width: 500px;
-    padding: 0 20px;
+    /* padding: 0 20px; */
     left:  50%;
     transform: translate(-50%,0);
-    overflow: hidden;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -26,6 +26,9 @@
 .contentWrap{
     margin-top: 26px;
     display: flex;
+    justify-content: center;
+    overflow: auto;
+    /* overflow-y: scroll; */
 }
 .forminsideWrap{
     flex:1;
@@ -34,6 +37,7 @@
 }
 
 .inputTitle{
+    padding-left: 1%;
     font-size: 15px;
     font-weight: 600;
     color: #262626;
@@ -41,7 +45,10 @@
 }
 
 .inputWrap{
-    display: flex;
+    margin-left: 25px;
+    width: 80%;
+    /* display: flex;
+    justify-content: center; */
     border-radius: 25px;
     padding: 16px;
     margin-top: 8px;
@@ -61,7 +68,6 @@
     height: 13px;
     font-size: 14px;
     font-weight: 400;
-
 }
 
 .gender{
@@ -72,7 +78,8 @@
 
 .btn-signup{
     font-size: 15px;
-    width: 100%;
+    width: 88%;
+    margin-left: 5%;
     height: 48px;
     border: none;
     font-weight: 700;
@@ -87,4 +94,59 @@
 .btn-signup:disabled{
 background-color: #dadada;
 color: white;
+}
+
+@media screen and (max-width: 768px ){
+  /* .inputTitle{
+
+    padding-left: 2%;
+    font-size: 12px;
+    font-weight: 600;
+    color: #262626;
+    width: 100%;
+
+  }
+
+  .contentWrap{
+    display: flex;
+    justify-content: center;
+  }
+  .inputWrap{
+
+  }
+
+  .btn-signup{
+    margin-left: 13%;
+
+} */
+
+  }
+  
+  @media screen and (max-width: 480px ){
+    .inputTitle{
+
+        /* padding-left: 2%; */
+        font-size: 13px;
+        font-weight: 600;
+        color: #262626;
+        width: 100%;
+    
+      }
+    
+      .contentWrap{
+        display: flex;
+        justify-content: center;
+        margin: 5px;
+      }
+      .inputWrap{
+        margin: 5px;
+        padding: 12px;
+      }
+    
+      .btn-signup{
+        /* margin-left: 13%; */
+    
+    }
+    
+
 }

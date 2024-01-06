@@ -35,12 +35,12 @@
 #btn-home12{
     position: absolute;
     top: 70%;
-    left: 18%;
+    left: 5%;
     border-radius: 50px;
-    border: 1px solid ;
+    border: 1px solid grey ;
     height: 2.5em;
     width: 13em;
-    background-color: #f0e329;
+    background-color: #f9ed45;
     font-weight: bold;
     font-size: 24px;
     transform: translate(-50%, 10%);
@@ -97,6 +97,7 @@
   margin: 0;
   position: absolute;
   top: auto;
+  
 }
 
 .divbody22{
@@ -109,6 +110,7 @@
   transform: translate( 20%, 250% );
 
 }
+
 
 @media screen and (max-width: 768px ){
 
@@ -129,6 +131,29 @@
     height: 2em;
     width: 4em;
     font-size: 17px;
+  }
+
+}
+
+@media screen and (max-width: 430px ){
+
+  .divbody2{
+    font-size: 25px;
+  }
+  .divbody22{
+    font-size: 22px;
+    transform: translate( 14%, 100% );
+  }
+  #btn-home12{
+    height: 2em;
+    width: 10em;
+    font-size: 12px;
+
+  }
+  #btn-home22{
+    height: 2em;
+    width: 4em;
+    font-size: 12px;
   }
 
 }
