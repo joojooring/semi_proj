@@ -79,18 +79,28 @@ const ProductComponent = ({ product }) => {
 
 
   return (
+    <>
+    {/* <div className='procart_outside'> */}
+
     <div className="product_container">
       <div className="product_image">
-        <img src={product.image} alt={product.name} />
+        <img style={{borderRadius: "20px"}} width={"210px"}  height={"199px"} src={product.image} alt={product.name} />
       <div className="product_description">
-        <h3>{product.name}</h3>
-        <p>{product.description}</p>
-        <p>{product.price} </p>
-        <p>{product.quantity}{state.value +1} <button onClick={plus}>+</button><button onClick={minus}>-</button></p>
-        <button>장바구니</button>
+        <h3 style={{marginTop: "10px", marginBottom:"8px"}}>{product.name}</h3>
+        <p style={{margin: "0", marginBottom:"5px"}}>{product.description}</p>
+        <p style={{margin: "0", marginBottom:"5px"}}> {product.price} </p>
+        <p style={{margin: "0", marginBottom:"5px"}}>{product.quantity} <button onClick={plus}>+</button>{state.value +1}<button onClick={minus}>-</button></p>
+        <br />
       </div>
+        <button>담기</button>
       </div>
     </div>
+
+    {/* </div> */}
+
+    </>
+    
+
   );
 };
 
@@ -98,12 +108,49 @@ const Product = () => {
   return (
     <div>
       <h1 style={{textAlign : "center", backgroundColor : "ivory", margin: "0", padding:"10px"}}>상품 목록</h1>
-      <div className="product_container">
+      <div class="container-wrapper">
+      <div className="container">
 
-      {products.map((product) => (
-        <ProductComponent key={product.id} product={product} />
-      ))}
-    </div>
+        <div className="product_container">
+
+          {products.map((product) => (
+            <ProductComponent key={product.id} product={product} />
+          ))}
+        </div>
+        <div className="cart">
+            <div style={{fontWeight: "bold", paddingBottom:"20px"}}>장바구니
+            </div>
+
+          <div className="cart_outside">
+
+            <div className='cart_inside'>
+            <div>총 수량</div>
+            <div className='cart_end'> 개</div>
+            </div>
+          <br/>
+
+            <div className='cart_inside'>
+            <div>총 상품 금액</div>
+            <div className='cart_end'> 원</div>
+            </div>
+          <br/>
+            <div className='cart_inside'>
+            <div>배송비</div>
+            <div className='cart_end'> 원</div>
+            </div>
+          <br/>
+            <div className='cart_inside'>
+            <div>총 주문금액</div>
+            <div className='cart_end'> 원</div>
+            </div>
+
+          </div>
+
+          <button className='paybtn'>주문하기</button>
+
+        </div>
+        </div>
+      </div>
     </div>
 
   );
