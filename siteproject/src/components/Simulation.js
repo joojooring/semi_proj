@@ -42,6 +42,8 @@ useEffect(() => {
             {showText ? "Self impression for bleaching frame at home" : "How to ?"}
           </h2>
           </div>
+
+        <div className="middleTxt"></div>
         <div className="player">
         <YouTube 
           className="youtube-player"

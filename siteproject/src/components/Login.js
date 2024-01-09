@@ -20,12 +20,14 @@ export default function Login(){
     const onValid = (data) => {
         const { email, pw } = data;
         const User = {
-        email : "ghkdwnfl0557@naver.com",
-        pw : "joo1234"
+        email : ["ghkdwnfl0557@naver.com", "aa1234@naver.com"],
+        pw : ["joo1234", "aa1234"]
     }
     
+    const emailIndex = User.email.indexOf(email); // 이메일 인덱스 찾기
+    const password = User.pw[emailIndex]; // 해당 이메일에 대응하는 비밀번호 가져오기
 
-    if (email === User.email && pw === User.pw) {
+    if (email === User.email[emailIndex] && pw === User.pw[emailIndex]) {
         dispatch(loginSuccess(User));
         alert("로그인 성공");
         navigate("/")
