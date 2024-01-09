@@ -16,12 +16,26 @@ const reducer = (prevstate, action) =>{
     }
 }
 
+const cartReducer = (state, action) => {
+  switch (action.type) {
+    case "ADD_TO_CART":
+      return {
+        ...state,
+        products: [...state.products, action.payload],
+      };
+    default:
+      return state;
+  }
+};
+
+
+
 const products = [
   {
     id: 1,
     name: '상품 1',
     description: 'Full set : tray + whitening gel',
-    price : "가격 : 150,000",
+    price : "150000",
     quantity : "수량 : ",
     image: './product1.webp',
   },
@@ -29,7 +43,7 @@ const products = [
     id: 2,
     name: '상품 2',
     description: 'special kit : tray + whitening gel +case + 미백치약',
-    price : "가격 : 250,000",
+    price : "250000",
     quantity : "수량 : ",
     image: './product2.png',
   },
@@ -37,7 +51,7 @@ const products = [
     id: 3,
     name: '상품 3',
     description: '자가치아미백제',
-    price : "가격 : 100,000",
+    price : "100000",
     quantity : "수량 : ",
     image: './product3.jpg',
   },
@@ -45,7 +59,7 @@ const products = [
     id: 4,
     name: '상품 4',
     description: 'Premium set : 기성tray + 광중합기 + 자가치아미백제',
-    price : "가격 : 350,000",
+    price : "350000",
     quantity : "수량 : ",
     image: './product4.jpg',
   },
@@ -53,7 +67,7 @@ const products = [
     id: 5,
     name: '상품 5',
     description: 'custom tray + 자가미백제',
-    price : "가격 : 200,000",
+    price : "200000",
     quantity : "수량 : ",
     image: './product5.jpg',
   },
@@ -61,14 +75,14 @@ const products = [
     id: 6,
     name: '상품 6',
     description: 'shade light',
-    price : "가격 : 56,000",
+    price : "56000",
     quantity : "수량 : ",
     image: './product6.jpg',
   },
 
 ];
 
-const ProductComponent = ({ product }) => {
+const ProductComponent = ({ product, addToCart }) => {
 
     const [state, dispatch] = useReducer(reducer, initialValue);
     const [quantity, setQuantity] = useState(0);
@@ -77,6 +91,10 @@ const ProductComponent = ({ product }) => {
     const plus = () => dispatch({type: "Plus"})
     const minus = () => dispatch({type: "Minus"})
 
+    const addToCartHandler = () => {
+      addToCart({ price: product.price, quantity: state.value + 1 });
+    };
+    
 
   return (
     <>
@@ -92,7 +110,7 @@ const ProductComponent = ({ product }) => {
         <p style={{margin: "0", marginBottom:"5px"}}>{product.quantity} <button onClick={plus}>+</button>{state.value +1}<button onClick={minus}>-</button></p>
         <br />
       </div>
-        <button>담기</button>
+        <button onClick={addToCartHandler}>담기</button>
       </div>
     </div>
 
@@ -105,16 +123,50 @@ const ProductComponent = ({ product }) => {
 };
 
 const Product = () => {
+  const [cart, dispatch] = useReducer(cartReducer, { products: [] });
+  const addToCart = (product) => {
+    dispatch({ type: "ADD_TO_CART", payload: product });
+  };
+
+  const calculateTotalQuantity = () => {
+    let totalQuantity = 0;
+    cart.products.forEach((product) => {
+      totalQuantity += product.quantity;
+    });
+    return totalQuantity;
+  };
+
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    cart.products.forEach((product) => {
+      totalPrice += product.price * (parseInt(product.quantity));
+    });
+    return totalPrice;
+  };
+
+  // 배송비와 총 주문금액 계산
+
+  const calculateShippingFee = () => {
+    const totalPrice = calculateTotalPrice();
+    if (totalPrice < 300000) {
+      return 2500;
+    } else {
+      return 0;
+    }
+  };
+  const shippingFee = calculateShippingFee();
+  const totalOrderPrice = calculateTotalPrice() + shippingFee;
+
   return (
     <div>
       <h1 style={{textAlign : "center", backgroundColor : "ivory", margin: "0", padding:"10px"}}>상품 목록</h1>
-      <div class="container-wrapper">
+      <div className="container-wrapper">
       <div className="container">
 
         <div className="product_container">
 
           {products.map((product) => (
-            <ProductComponent key={product.id} product={product} />
+            <ProductComponent key={product.id} product={product} addToCart={addToCart} />
           ))}
         </div>
         <div className="cart">
@@ -125,23 +177,23 @@ const Product = () => {
 
             <div className='cart_inside'>
             <div>총 수량</div>
-            <div className='cart_end'> 개</div>
+            <div className='cart_end'>{calculateTotalQuantity()} 개</div>
             </div>
           <br/>
 
             <div className='cart_inside'>
             <div>총 상품 금액</div>
-            <div className='cart_end'> 원</div>
+            <div className='cart_end'>{calculateTotalPrice()} 원</div>
             </div>
           <br/>
             <div className='cart_inside'>
             <div>배송비</div>
-            <div className='cart_end'> 원</div>
+            <div className='cart_end'> {shippingFee}원</div>
             </div>
           <br/>
             <div className='cart_inside'>
             <div>총 주문금액</div>
-            <div className='cart_end'> 원</div>
+            <div className='cart_end'> {totalOrderPrice}원</div>
             </div>
 
           </div>

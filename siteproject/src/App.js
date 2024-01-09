@@ -1,4 +1,7 @@
 import React from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeHeader from './components/HomeHeader';
 import Homebody from "./components/HomeBody";
@@ -16,6 +19,19 @@ import Cart from './components/Cart';
 
 
 function App() {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_DB_HOST}/`);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <BrowserRouter>
       <HomeHeader />
