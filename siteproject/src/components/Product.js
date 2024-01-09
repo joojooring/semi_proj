@@ -109,7 +109,7 @@ const ProductComponent = ({ product, addToCart }) => {
     {/* <div className='procart_outside'> */}
 
     <div className="product_container">
-      <div className="product_image" onClick={addToCartHandler}>
+      <div className="product_image">
         <img style={{borderRadius: "20px"}} width={"290px"}  height={"280px"} src={product.image} alt={product.name} />
       <div className="product_description">
         <h3 style={{marginTop: "10px", marginBottom:"8px", fontSize:"22px"}}>{product.name}</h3>
@@ -182,9 +182,7 @@ const Product = () => {
 
   return (
     <div>
-<div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1 }}>
-  <h1 style={{ textAlign: "center", margin: 0, paddingTop: "70px",paddingBottom:"15px", backgroundColor:"rgba(160, 223, 249, 0.256)" }}>상품 목록</h1>
-</div>
+      <h1 style={{textAlign : "center", margin: "0", padding:"10px"}}>상품 목록</h1>
       <div className="container-wrapper">
       <div className="container">
 
