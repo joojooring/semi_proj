@@ -23,6 +23,11 @@ const cartReducer = (state, action) => {
         ...state,
         products: [...state.products, action.payload],
       };
+      case "RESET_CART":
+      return {
+        ...state,
+        products: [],
+      };
     default:
       return state;
   }
@@ -94,6 +99,9 @@ const ProductComponent = ({ product, addToCart }) => {
     const addToCartHandler = () => {
       addToCart({ price: product.price, quantity: state.value + 1 });
     };
+
+    const deleteCartHandler = () =>{
+      addToCart({ price: product.price, quantity: state.value - 1 });    }
     
 
   return (
@@ -101,16 +109,22 @@ const ProductComponent = ({ product, addToCart }) => {
     {/* <div className='procart_outside'> */}
 
     <div className="product_container">
-      <div className="product_image">
-        <img style={{borderRadius: "20px"}} width={"210px"}  height={"199px"} src={product.image} alt={product.name} />
+      <div className="product_image" onClick={addToCartHandler}>
+        <img style={{borderRadius: "20px"}} width={"290px"}  height={"280px"} src={product.image} alt={product.name} />
       <div className="product_description">
-        <h3 style={{marginTop: "10px", marginBottom:"8px"}}>{product.name}</h3>
-        <p style={{margin: "0", marginBottom:"5px"}}>{product.description}</p>
-        <p style={{margin: "0", marginBottom:"5px"}}> {product.price} </p>
-        <p style={{margin: "0", marginBottom:"5px"}}>{product.quantity} <button onClick={plus}>+</button>{state.value +1}<button onClick={minus}>-</button></p>
+        <h3 style={{marginTop: "10px", marginBottom:"8px", fontSize:"22px"}}>{product.name}</h3>
+        <p style={{margin: "0", marginBottom:"5px", fontSize:"18px"}}>{product.description}</p>
+        <p style={{margin: "0", marginBottom:"5px", fontSize:"18px"}}> 가격 : {product.price}원</p>
+        <p style={{margin: "0", marginBottom:"5px", fontSize:"18px"}}>{product.quantity} <button className='btn_plus' onClick={plus}>+</button>{state.value +1}<button className='btn_minus' onClick={minus}>-</button></p>
         <br />
       </div>
-        <button onClick={addToCartHandler}>담기</button>
+
+      <div>
+        <button className='btn_addcart' onClick={addToCartHandler}>담기</button>
+        <button className='btn_deletecart' onClick={deleteCartHandler}>빼기</button>
+
+      </div>
+
       </div>
     </div>
 
@@ -147,6 +161,10 @@ const Product = () => {
   // 배송비와 총 주문금액 계산
 
   const calculateShippingFee = () => {
+    if (cart.products.length === 0) {
+      return 0;
+    }
+
     const totalPrice = calculateTotalPrice();
     if (totalPrice < 300000) {
       return 2500;
@@ -157,9 +175,16 @@ const Product = () => {
   const shippingFee = calculateShippingFee();
   const totalOrderPrice = calculateTotalPrice() + shippingFee;
 
+
+  const resetCartHandler = () => {
+    dispatch({ type: "RESET_CART" });
+  };
+
   return (
     <div>
-      <h1 style={{textAlign : "center", backgroundColor : "ivory", margin: "0", padding:"10px"}}>상품 목록</h1>
+<div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1 }}>
+  <h1 style={{ textAlign: "center", margin: 0, paddingTop: "70px",paddingBottom:"15px", backgroundColor:"rgba(160, 223, 249, 0.256)" }}>상품 목록</h1>
+</div>
       <div className="container-wrapper">
       <div className="container">
 
@@ -198,7 +223,10 @@ const Product = () => {
 
           </div>
 
+            <div className='paybtn_outside'>
           <button className='paybtn'>주문하기</button>
+          <button className='paybtn_delete' onClick={resetCartHandler}>전체 취소</button>
+            </div>
 
         </div>
         </div>
