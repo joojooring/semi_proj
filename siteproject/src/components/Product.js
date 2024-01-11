@@ -1,6 +1,8 @@
 import React from 'react';
 import '../styles/product.css';
 import { useCallback, useReducer, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const initialValue = {value: 0}
 const reducer = (prevstate, action) =>{
@@ -9,8 +11,12 @@ const reducer = (prevstate, action) =>{
             // 위에서 객체형태로{} 선언했기때문에 리턴값도 객체형태로
             return {value : prevstate.value +1};
         case "Minus" :
-            return {value : prevstate.value -1};
-
+          if (prevstate.value > 0) {
+            // 1보다 클 경우에만 감소
+            return { value: prevstate.value - 1 };
+          } else {
+            return prevstate; // 1 이하일 경우에는 상태 그대로 반환
+          }
         default :
         return {value : prevstate.value};
     }
@@ -138,9 +144,13 @@ const ProductComponent = ({ product, addToCart }) => {
 
 const Product = () => {
   const [cart, dispatch] = useReducer(cartReducer, { products: [] });
+  
   const addToCart = (product) => {
     dispatch({ type: "ADD_TO_CART", payload: product });
   };
+
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const navigate = useNavigate();
 
   const calculateTotalQuantity = () => {
     let totalQuantity = 0;
@@ -161,7 +171,7 @@ const Product = () => {
   // 배송비와 총 주문금액 계산
 
   const calculateShippingFee = () => {
-    if (cart.products.length === 0) {
+    if (calculateTotalQuantity() === 0) {
       return 0;
     }
 
@@ -176,13 +186,37 @@ const Product = () => {
   const totalOrderPrice = calculateTotalPrice() + shippingFee;
 
 
-  const resetCartHandler = () => {
-    dispatch({ type: "RESET_CART" });
+  const orderHandler = () => {
+    if (!isLoggedIn) {
+      const confirmResult = window.confirm("로그인 후 이용할 수 있습니다.");
+  
+      if (confirmResult) {
+        navigate("/login");
+      } else {
+        return;
+      }
+    } else {
+      if (calculateTotalQuantity() === 0) {
+        alert("상품을 담아주세요.");
+      } else {
+        dispatch({ type: "RESET_CART" });
+        alert("주문이 완료되었습니다.");
+      }
+    }
   };
-
-  return (
+  
+  const resetCartHandler = () => {
+    if (calculateTotalQuantity() === 0) {
+      alert("취소할 상품이 없습니다.");
+    } else {
+      const confirmReset = window.confirm("정말 전부 취소하시겠습니까?");
+      if (confirmReset) {
+        dispatch({ type: "RESET_CART" });
+      }
+    }
+  };  return (
     <div>
-      <h1 style={{textAlign : "center", margin: "0", padding:"10px"}}>상품 목록</h1>
+      <h1 className='productName' style={{textAlign : "center", margin: "0", padding:"10px"}}>상품 목록</h1>
       <div className="container-wrapper">
       <div className="container">
 
@@ -222,7 +256,7 @@ const Product = () => {
           </div>
 
             <div className='paybtn_outside'>
-          <button className='paybtn'>주문하기</button>
+          <button className='paybtn' onClick={orderHandler}>주문하기</button>
           <button className='paybtn_delete' onClick={resetCartHandler}>전체 취소</button>
             </div>
 

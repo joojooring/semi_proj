@@ -65,7 +65,7 @@ export default function Signup () {
                     
                     </div>
                         {errors.name && (
-                        <div  style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.name.message}</div>
+                        <div  style={{ color: "red", fontSize:"11px", paddingTop:"3px", paddingLeft: "30px" }}>{errors.name.message}</div>
                         )}                
 
                         <br />
@@ -91,7 +91,7 @@ export default function Signup () {
                     
                     </div>
                         {errors.phonenumber && (
-                        <div  style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.phonenumber.message}</div>
+                        <div  style={{ color: "red", fontSize:"11px", paddingTop:"3px", paddingLeft: "30px" }}>{errors.phonenumber.message}</div>
                         )}                
 
                         <br />
@@ -120,7 +120,7 @@ export default function Signup () {
                         />
                     </div>
                             {errors.email  && (
-                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.email.message}</div>
+                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px", paddingLeft: "30px" }}>{errors.email.message}</div>
                             )}                
 
                     <br />
@@ -148,7 +148,7 @@ export default function Signup () {
                         </input>
                     </div>
                         {errors.pw && (
-                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.pw.message}</div>
+                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px", paddingLeft: "30px" }}>{errors.pw.message}</div>
                             )}                
                     <br />
 
@@ -173,7 +173,7 @@ export default function Signup () {
                         </input>
                     </div>
                         {errors.confirmPassword  && (
-                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.confirmPassword .message}</div>
+                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px", paddingLeft: "30px" }}>{errors.confirmPassword .message}</div>
                             )}                
                     <br />
 
@@ -190,7 +190,7 @@ export default function Signup () {
                             <i style={{color: "red"}} className="fa-solid fa-venus"></i>
                         여</label>{" "}
                         {errors.gender && (
-                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.gender.message}</div>
+                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px", paddingLeft: "30px" }}>{errors.gender.message}</div>
                             )}                
                     </div>
                     </div>

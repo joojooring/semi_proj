@@ -1,6 +1,12 @@
 /* .inputForm{
   width: 100%;
 } */
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+  font-weight: normal;
+  font-style: normal;
+}
 
 .mapContainer{
     display: flex;
@@ -16,6 +22,8 @@
     overflow: hidden;
     padding-top: 10px;
     padding-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 .searchInput::placeholder {

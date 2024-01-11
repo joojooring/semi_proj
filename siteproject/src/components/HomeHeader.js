@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 // import "../styles/header.css"
 import "../styles/headerprac.css"
 import { useSelector, useDispatch } from "react-redux";
 import { logout, loginSuccess } from "../redux/actions/authAction";
 import About from "./About"
 
+const activeStyle = {
+  fontWeight:'600',
+  color:'black',
+  backgroundColor : "rgb(250, 250, 112)",
+  borderRadius:"550px",
+  border:"solid 0",
+  margin : "2px"
+ }
 
 export default function HomeHeader() {
 
@@ -14,19 +22,6 @@ export default function HomeHeader() {
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
-
-
-  // const handleLogin = (isLoggedIn) => {
-  //   // 로그인 로직 처리 후 로그인 상태 업데이트
-  //   setIsLoggedIn(isLoggedIn);
-  // };
-
-  // const handleLogout = () => {
-  //   // 로그아웃 로직 처리 후 로그인 상태 업데이트
-
-
-  //   setIsLoggedIn(false);
-  // };
 
   const handleLogin = () => {
     dispatch(loginSuccess());
@@ -68,37 +63,33 @@ const toggleMenu = ()=>{
             <ul className={`navbar__menu ${menulist ? 'visible' : ''}`}>
 
             {/* <ul className='navbar__menu'>{menulist} */}
-            <Link to="/"><li onClick={toggleMenu}>Home</li></Link>
-            <Link to="/dental"><li onClick={toggleMenu}>Dental</li></Link>
-            <Link to="/simulation"><button id="btn-header1" onClick={toggleMenu}>Simulation</button></Link>
-            <Link to="/product"><li onClick={toggleMenu}>Product</li></Link>
+            <NavLink to="/" style={({isActive})=> (isActive ? activeStyle : {})}><li onClick={toggleMenu}>Home</li></NavLink >
+            <NavLink to="/dental" style={({isActive})=> (isActive ? activeStyle : {})}><li onClick={toggleMenu}>Dental</li></NavLink>
+            <NavLink to="/simulation" style={({isActive})=> (isActive ? activeStyle : {})}><li onClick={toggleMenu}>Simulation</li></NavLink>
+            <NavLink to="/product" style={({isActive})=> (isActive ? activeStyle : {})}><li onClick={toggleMenu}>Product</li></NavLink>
            
             {isLoggedIn ? (
             <>
-            <Link to="/">
-              <li onClick={handleLogout} style={{ fontSize: "16px", marginTop: "5px" }}>
+            <NavLink to="/" >
+              <li onClick={handleLogout} style={{ fontSize: "16px", marginTop: "3px" }}>
                 로그아웃
               </li>
-            </Link>
-            {/* 로그인 헤더의 나머지 내용 */}
+            </NavLink>
             </>
           ) : (
             <>
-          <Link to="/signup">
-            <li onClick={toggleMenu} style={{ fontSize: "16px", marginTop: "5px" }}>
+          <NavLink to="/signup" style={({isActive})=> (isActive ? activeStyle : {})}>
+            <li onClick={toggleMenu} style={{ fontSize: "16px", marginTop: "3px" }}>
               회원가입
             </li>
-          </Link>
-          <Link to="/login">
-            <li style={{ fontSize: "16px", marginTop: "5px" }}>
+          </NavLink>
+          <NavLink to="/login" style={({isActive})=> (isActive ? activeStyle : {})}>
+            <li onClick={toggleMenu} style={{ fontSize: "16px", marginTop: "3px" }}>
               로그인
             </li>
-          </Link>
+          </NavLink>
         </>
       )}
-
-            {/* <Link to="/cart"><li onClick={toggleMenu} style={{fontSize:"16px", marginTop:"5px"}}>장바구니</li></Link> */}
-
             </ul>
         </nav>
       </header>

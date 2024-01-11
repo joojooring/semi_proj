@@ -47,40 +47,8 @@ useEffect(() => {
         <div className="player">
         <YouTube 
           className="youtube-player"
-          videoId="BSWo2WduxgE" opts={opts} onReady={onReady} />;
+          videoId="BSWo2WduxgE" opts={opts} onReady={onReady} />
         </div>
-
-      {/* <div className="simul">
-        <div className="content">
-          <h2>Before</h2>
-          <img src="./before1.jpg" width="520px" height="320px"></img>
-        </div>
-        <hr />
-        <div className="content">
-          <h2>After</h2>
-          <img src="./after1.jpg" width="520px" height="320px"></img>
-        </div>
-      </div>
-
-      <div className="simul">
-        <div className="content">
-          <h2>Before</h2>
-          <img src="./before2.jpg" width="520px" height="320px"></img>
-        </div>
-        <hr />
-        <div className="content">
-          <h2>After</h2>
-          <img src="./after2.jpg" width="520px" height="320px"></img>
-        </div>
-      </div> */}
-
-    
-    {/* <div className="samplediv">
-    <div className="div1">scale 2</div>
-    <div className="div2">scale 0.5</div>
-    <div className="div3">scaleX 2</div>
-    <div className="div4">scaleY 2</div>
-    </div> */}
 
     </>
   );

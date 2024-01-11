@@ -77,7 +77,7 @@ export default function Login(){
                         />
                     </div>
                             {errors.email  && (
-                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.email.message}</div>
+                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px", paddingLeft: "30px" }}>{errors.email.message}</div>
                             )}                
 
                     <br />
@@ -105,7 +105,7 @@ export default function Login(){
                         </input>
                     </div>
                         {errors.pw && (
-                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px" }}>{errors.pw.message}</div>
+                            <div style={{ color: "red", fontSize:"11px", paddingTop:"3px", paddingLeft: "30px" }}>{errors.pw.message}</div>
                             )}                
                     <br />
                         

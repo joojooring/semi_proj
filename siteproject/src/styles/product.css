@@ -16,6 +16,17 @@
   gap: 10px;
 }
  */
+
+ @font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.productName{
+  font-family: 'Roboto', sans-serif;
+}
  .container-wrapper {
   display: flex;
   justify-content: space-between;
@@ -24,6 +35,8 @@
 .container{
   display: flex;
   justify-content: space-between;
+  font-family: 'Roboto', sans-serif;
+
 }
 
 .product_container{
@@ -87,6 +100,8 @@
   text-align: center;
   font-weight: bold;
   cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+
 
 }
 
@@ -99,6 +114,8 @@
   font-weight: bold;
   background-color: rgba(255, 74, 74, 0.249);
   cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+
 
 
 }
@@ -119,7 +136,7 @@
   padding: 5rem;
   border: 0px;
   font: inherit;
-  /* font-weight: ; */
+  font-family: 'Roboto', sans-serif;
   vertical-align: baseline;
 }
 
@@ -138,6 +155,7 @@
   justify-content: space-between;
   border-bottom: 2px solid rgb(223, 220, 220);
   padding:10px;
+  
 
 }
 
@@ -165,6 +183,8 @@
   border-radius: 15px;
   cursor: pointer;
   border: transparent;
+  font-family: 'Roboto', sans-serif;
+
 }
 
 .paybtn_delete{
@@ -177,6 +197,8 @@
   border-radius: 15px;
   cursor: pointer;
   border: transparent;
+  font-family: 'Roboto', sans-serif;
+
 
 }
 
